@@ -20,8 +20,8 @@
                 <div class="card-body">
                     <form id="loginForm" onsubmit="return validateForm()">
                         <div class="mb-3">
-                            <label for="username" class="form-label">Usuario:</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <label for="username" class="form-label">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="username" name="username" inputmode="email" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña:</label>
@@ -48,7 +48,7 @@
         let emailRegex = /\S+@\S+\.\S+/;
 
         if (!emailRegex.test(emailInput.value)) {
-            alert('Por favor, ingresa una direcciÃ³n de correo electrÃ³nico vÃ¡lida.');
+            alert('Por favor, ingresa una dirección de correo electrónico válida.');
             return false;
         }
 
