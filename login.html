@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="login.js"></script>
-    <title>Login Form</title>
+    <title>Login</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,6 +27,7 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña:</label>
                             <input type="password" class="form-control" id="password" name="password" required>
+                            <small id="passwordHelp" class="form-text text-muted">La contraseña debe tener al menos 8 caracteres, una mayúscula y un dígito.</small>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="remember">
@@ -46,10 +47,17 @@
 <script>
     function validateForm() {
         let emailInput = document.getElementById('username');
+        let passwordInput = document.getElementById('password');
         let emailRegex = /\S+@\S+\.\S+/;
+        let passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
         if (!emailRegex.test(emailInput.value)) {
             alert('Por favor, ingresa una dirección de correo electrónico válida.');
+            return false;
+        }
+
+        if (!passwordRegex.test(passwordInput.value)) {
+            alert('La contraseña debe tener al menos 8 caracteres, una mayúscula y un dígito.');
             return false;
         }
 
