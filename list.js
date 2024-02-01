@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+            let characterId = 1;
             document.querySelector(".btn.btn-primary").addEventListener("click", event => {
-                fetch('https://rickandmortyapi.com/api/character/2')
+                fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
                     .then(response => response.json())
                     .then(data => {
                         var itemList = document.getElementById("my-list");
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         clone.querySelector("[data-id='image']").src = data.image;
 
                         itemList.appendChild(clone);
+                        characterId++;
                     })
                     .catch(error => console.error('Error fetching data:', error));
             });
