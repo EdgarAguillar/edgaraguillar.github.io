@@ -1,27 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-            let characterId = 1;
-            document.querySelector(".btn.btn-primary").addEventListener("click", event => {
-                fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        var itemList = document.getElementById("my-list");
-                        var template = document.getElementById("list-template");
-                        var total = itemList.childElementCount + 1;
-                        var clone = template.content.cloneNode(true);
+    fetch('https://rickandmortyapi.com/api/character')
+        .then(response => response.json())
+        .then(data => {
+            var itemList = document.getElementById("my-list");
+            var template = document.getElementById("list-template");
 
-                        clone.querySelector("[data-id='number']").textContent = `${total}`;
-                        clone.querySelector("[data-id='title']").textContent = data.name;
-                        clone.querySelector("[data-id='content']").textContent = `Status: ${data.status}, Species: ${data.species}`;
-                        clone.querySelector("[data-id='image']").src = data.image;
+            data.results.forEach((character, index) => {
+                var total = index + 1;
+                var clone = template.content.cloneNode(true);
 
-                        itemList.appendChild(clone);
-                        characterId++;
-                    })
-                    .catch(error => console.error('Error fetching data:', error));
+                clone.querySelector("[data-id='number']").textContent = `${total}`;
+                clone.querySelector("[data-id='title']").textContent = character.name;
+                clone.querySelector("[data-id='content']").textContent = `Status: ${character.status}, Species: ${character.species}`;
+                clone.querySelector("[data-id='image']").src = character.image;
+
+                itemList.appendChild(clone);
             });
-
-            document.querySelector(".btn.btn-light").addEventListener("click", event => {
-                var itemList = document.getElementById("my-list");
-                itemList.replaceChildren();
-            });
-        });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
