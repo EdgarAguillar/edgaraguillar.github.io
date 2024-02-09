@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const searchQuery = document.getElementById("searchInput").value.trim();
 
         // Construimos la URL de la API con el parámetro de búsqueda
-        const apiUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}&species=${searchQuery}`;
+        const apiUrl = `https://rickandmortyapi.com/api/character/?name=${searchQuery}`;
 
         // Realizamos la solicitud a la API con la URL construida
         fetch(apiUrl)
