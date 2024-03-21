@@ -1,6 +1,6 @@
 <?php
 $dbHost='localhost';
-$dbName='integradora';
+$dbName='Integradora';
 $dbUser='root';
 $dbPass='root';
 try{
