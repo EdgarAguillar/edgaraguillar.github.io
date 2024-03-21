@@ -3,10 +3,11 @@ $dbHost='localhost';
 $dbName='Integradora';
 $dbUser='root';
 $dbPass='root';
-try{
-    $pdo=new PDO("mysql:host=$dbHost;dbname=$dbName",$dbUser,$dbPass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    }catch (Exception $e){
-    echo $e->getMessage();
+// Crear una conexión mysqli
+$mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+
+// Verificar la conexión
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
 }
 ?>
