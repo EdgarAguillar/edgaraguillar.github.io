@@ -11,9 +11,9 @@
             "extensions": [
                 "streetsidesoftware.code-spell-checker"
             ]
-        },
-        "postCreateCommand": "sudo apt-get update && sudo apt-get install -y php-mysql"
+        }
     },
+    "runArgs": ["-e", "apt-get update && apt-get install -y php-mysql"],
     "portsAttributes": {
         "8000": {
             "label": "Hello Remote World",
